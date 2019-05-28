@@ -63,7 +63,7 @@ print(xmasRegex.findall(lyrics))
 
 #Making your own character classes
 
-vowelsReg = re.compile(r'[aeiouAEIOU]')
+vowelsReg = re.compile(r'[aeiouAEIOU]') #PYTHON SPECIFIC you can pass 're.IGNORECASE' to cover new-line too like  re.compile(r'[aeiou]', re.IGNORECASE)
 vowelsRegDouble = re.compile(r'[aeiouAEIOU]{2}')
 negVowelsReg = re.compile(r'[^aeiouAEIOU]')
 
@@ -72,5 +72,35 @@ print(vowelsReg.findall('Robocop eats baby food'))
 print(vowelsRegDouble.findall('Robocop eats baby food'))
 
 
-#^ caret symbol (negate)
+#^ caret symbol (negate) inside if the []
 print(negVowelsReg.findall('Robocop eats baby food'))
+
+# ^ caret symbol (begining) '^Hello'
+# $ dollar symbol (end) 'wolrd$'
+# you can use them to sya it covers 'the entire text' '^Hell wolrd$''
+
+beginsWithHello = re.compile(r'^Hello')
+beginsWithHelloOut =  beginsWithHello.search('Hello there!')
+beginsWithHelloOut2 = beginsWithHello.search('Hi there Hello')
+
+endsWithWorld = re.compile(r'World$')
+endsWithWorldOut = endsWithWorld.search('clean World')
+print(endsWithWorldOut)
+
+# wild-Card . (dot) stand for any character execpt for new-line
+#PYTHON SPECIFIC you can pass 're.DOTALL' to cover new-line too like  re.compile(r'.*', re.DOTALL)
+atRex = re.compile(r'.{1,2}at')
+print(atRex.findall('The Cat in the hat sat on the flat mat'))
+
+
+#.*   dot(any character) * (0 or more) - greedy mode.
+#.*?  dot(any character) * (0 or more) - none greedy mode - take as less character as posible.
+nameRex = re.compile(r'First Name: (.*) Last Name: (.*)') # twoples
+print(nameRex.findall('First Name: Ian Last Name: Reynoso'))
+
+serve = '<To serve humans> for dinner> '
+nongreedy = re.compile(r'<(.*?)>') 
+greedy = re.compile(r'<(.*)>') 
+print(nongreedy.findall(serve))
+print(greedy.findall(serve))
+
