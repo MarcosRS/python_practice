@@ -104,3 +104,19 @@ greedy = re.compile(r'<(.*)>')
 print(nongreedy.findall(serve))
 print(greedy.findall(serve))
 
+#Find Features  - upto-now search and findall
+namesRegex = re.compile(r'Agent \w+')
+print(namesRegex.findall('Agent Alice gave the secret document to Agent Bob'))
+
+#Sub - Subtitute
+print(namesRegex.sub('REDACTED','Agent Alice gave the secret document to Agent Bob'))
+
+#Grabbing character from result - Using groups
+namesRegex = re.compile(r'Agent (\w)\w*')
+print(namesRegex.sub(r'Agent \1****','Agent Alice gave the secret document to Agent Bob')) #\1 \2 .. match the the specified groups
+
+# Verbose - Format, in verbose mode new-lines won't affect the regex. You can also put comments in verbose mode
+verboseEx = re.compile(r,'''
+            \d\d\d      #area code
+            -\d\d\d     #first 3 digits
+            -\d\d\d\d   #last four digits''', re.VERBOSE)
