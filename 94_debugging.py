@@ -52,3 +52,63 @@ switchLights(market_2nd)
 
 #Note: Aserctions are for detecting programmer errors that are not meant to be recovered from.
 #User errors should raise execeptions. 
+
+
+
+
+
+#LOGGIN MODULE
+# To add logging you need to enable it (for your script) first
+
+import logging
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+#logging.disable(logging.CRITICAL)
+
+# TO TURN OF ALL logging you can do: logging.disable(logging.CRITICAL).
+# THE LOG levels are: debug(lowest), info, warning, error, critical(highest)
+# CALLS: logging.debug(), logging.info(), logging.warning(), logging.error(), logging.critical()
+# YOU can also write the logs to a file like  logging.basicConfig(filename='myProgramLog.txt', level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+
+def factorial(n):
+    logging.debug('Start of factorial(%s)' % (n))
+    total = 1
+    for i in range(1 ,n + 1):
+        total *= i
+        logging.debug('i is %s, total is %s' % (i, total))
+    logging.debug('Return value is %s' % (total))
+    return total
+
+factorial(5)
+logging.debug('End of Program')
+
+print(factorial(5))
+
+
+
+
+
+# USING THE DEBUGGER  -  IDLE (pyhon IDE)
+# check stack, locals, source, globals - in config
+# The execution will pause on each lines
+# looks at the debug control
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
