@@ -72,5 +72,35 @@ print('The price is ' + price)
 
 
 
+#Crontrolling Browser - Selenium (thirdparty)  
+
+from slenium import webdriver
+browser = webdriver.Firefox()
+browser.get('https://google.com')
+elem = browser.find_element_by_css_selector('.class_name')
+elems = browser.find_elements_by_css_selector('p')
+elem.click()
+len(elems)
+
+#another example
+searchField = browser.find_element_by_css_selector('#search-field')
+searchField.send_keys('zophie')
+searchField.submit() #finds submit
+
+#actions
+browser.back()
+browser.forward()
+browser.refresh()
+browser.quit()
+
+#read 
+elem = browser.find_element_by_css_selector('.paragrapgh')
+elem.text
+
+elem = browser.find_element_by_css_selector('html')
+elem.text #entire page
+
+
+
 
 
