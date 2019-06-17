@@ -55,4 +55,52 @@ sheet3 = wb.create_sheet(index = 0, title = 'mythirdsheet') # this creates a new
 wb.save('example3.xlsx')
 
 
-#PDF
+
+
+
+#PDF - Reader
+import PyPDF2 # third party , the best one
+import os
+
+os.chdir('./users/al/documents')
+
+pdfFile = open('somepdf.pdf', 'rb') # read binary mode
+
+reader =  PyPDF2.PdFileReader(pdfFile)
+reader.numPages
+
+page = reader.getPage(0)
+page.extractText() # sometime you have to playaround with the deta returned since it not 100% exact
+
+#to read all pages
+
+for pageNum in range(reader.numPages):
+    print(reader.getPage(pageNum).extractText())
+
+
+#PDF - Writing 
+# Very limited - only edits at page level, placement
+
+pdfFile1 = open('somepdf1.pdf', 'rb') 
+pdfFile2 = open('somepdf2.pdf', 'rb') 
+
+reader1 =  PyPDF2.PdFileReader(pdfFile1)
+reader2 =  PyPDF2.PdFileReader(pdfFile2)
+
+writer =  PyPDF2.PdFileWriter()
+
+for pageNum in range(reader1.numPages):
+    page = reader1.getPage(pageNum)
+    writer.addPage(page)
+    
+for pageNum in range(reader2.numPages):
+    page = reader2.getPage(pageNum)
+    writer.addPage(page)
+
+
+
+outputFile = open('combinedpdf.pdf', 'wb') #write binary mode
+write.write(outputFile)
+
+pdfFile1.close()
+pdfFile2.close()
