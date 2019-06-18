@@ -104,3 +104,64 @@ write.write(outputFile)
 
 pdfFile1.close()
 pdfFile2.close()
+
+
+
+
+
+#WORD DOC 
+import docx # pip install python-docx 
+d = docx.Documents('/document.docx')
+
+
+d.paragraph[0] # its an object
+d.paragraph[0].text
+
+p = d.paragraph[1]
+p.runs # its whenever style changes within the paragraph
+
+p.runs[0].text # the are placed in a list
+p.runs[0].bold # True or False 
+
+# you can change 
+p.runs[0].text = '123'
+p.runs[0].underline = True
+p.style #'Normal'
+
+d.save('/document2.docx')
+
+
+doc = docx.Documents() #creates new document
+doc.add_paragraph('Imagine this is a big paragraph')
+doc.add_paragraph('Imagine this is a big paragraph 2')
+doc.save('/document3.docx')
+p = doc.paragraph[0]
+p.add_run('This is a new run')
+p.runs # aout put runs
+
+p.runs[1].bold = True
+
+doc.save('/document3.docx')
+
+
+# Grab the entire text from a docx document
+import docx
+
+def getText(filename):
+    doc = docx.Document(filename)
+    fullText = []
+    for paragraph in doc.paragraphs:
+        fullText.append(paragraph.text)
+    
+    return '\n'.join(fullText)
+
+
+
+
+
+
+
+
+
+
+
