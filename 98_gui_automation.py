@@ -30,3 +30,53 @@ pyautogui.rightClick(100,250) # right click with coordinates
 
 pyautogui.dragRel(200, 250, duration=2) # right click pressed with duration 
 
+
+
+
+
+#Keyboard
+import pyautogui
+
+#first focus where you want to write
+pyautogui.click(100, 100)
+pyautogui.typewrite('Hello World')
+#for multiple commands use `;`
+pyautogui.click(100, 100);
+pyautogui.typewrite('Hello World')
+
+#for pauses between characters you can use interval
+pyautogui.typewrite('Hello World',interval=0.2)
+
+#to send specific keys like 'left' arrow use
+pyautogui.typewrite(['a','b','left','left','X','Y']) #XYab
+
+#For keyboarkeys list 
+pyautogui.KEYBOARD_KEYS # prints the list
+
+#to press you one key
+pyautogui.press('f1')
+
+#to press a combination of keys like `ctrl-c` & `ctrl-v`
+pyautogui.hotkey('ctrl', 'o')
+
+
+
+
+
+
+#Sceen shots and image recognition
+#to use the screenshot pyautogui feature and NOT 'windows or OS 10' you need to install  `sudo apt-get install scrot`
+import pyautogui
+pyautogui.screenshot() # this creates something called a pillow object
+
+#saves screenshot in a file
+pyautogui.screenshot('./screenshot_example.png')
+
+# you can just screenshot a certain section of the screen.
+# and pass it to locateOnScreen or locateCenterOnScreen 
+# coputing expensive and screenshots have to be pixel perfect. Not suited for realtime. Read the docs for partial matches
+pyautogui.locateOnScreen('./screenshot_of_a_num7_in_calc') #this will return (x,y,width, hegiht) 
+pyautogui.locateCenterOnScreen('./screenshot_of_a_num7_in_calc') #this will return (x,y,width, hegiht). x and y will be the center 
+
+pyautogui.moveTo((300, 300), duration=1)
+pyautogui.click((300, 300)) #it can be passed in ()
