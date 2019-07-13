@@ -1,6 +1,6 @@
 import time
 import subprocess
-import pyautogui
+#import pyautogui
 #import shlex
 #import requests
 import json
@@ -15,23 +15,26 @@ from subprocess import Popen, PIPE
 # Set up the echo command and direct the output to a pipe
 #host = input("Enter a host to ping: ")
 
-proc = Popen(['ngrok','http','3000'], stdout=PIPE)
+#proc = Popen(['ngrok','http','4000'], stdout=PIPE)
 #proc = Popen(['ping', '-c 2', host], stdout=PIPE)
 #output = proc.stdout.readline()
 #time.sleep(2)
 
 #print (proc.communicate()[0])
-#print(proc.stdout.readline())
+# print(proc.stdout.readline())
 #print(output.strip())
 #proc.terminate()
 #time.sleep(20)
 #proc = subprocess.Popen(['ngrok http 3000'], shell=True)
 #time.sleep(10)
-#proc.terminate()
+
+proc = Popen(['ngrok','http','4000'], stdout=PIPE)
+time.sleep(20)
+proc.terminate()
 
 
 
-localhost_url = "http://localhost:3000/api/tunnels" #Url with tunnel details
+localhost_url = "http://localhost:4040/status" #Url with tunnel details
 #tunnel_url = requests.get(localhost_url).text #Get the tunnel information
 #j = json.loads(tunnel_url)
 
